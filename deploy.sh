@@ -1,6 +1,5 @@
 #!/bin/sh
 
-su - scada
 cd /home/scada/webapp/CloudSCADA
 git pull origin master
 
