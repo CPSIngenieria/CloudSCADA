@@ -1,0 +1,9 @@
+{% if posts %}
+	<ul>
+		{% for post in posts %}
+		<li><a href="/blog/{{ post.post_title }}/">{{ post.post_title }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>No existen posts aun en el blog</p>
+{% endif %}

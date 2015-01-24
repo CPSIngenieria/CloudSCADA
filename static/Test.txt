@@ -1,1 +1,0 @@
-Los archivos estaticos se estan sirviendo con exito!
