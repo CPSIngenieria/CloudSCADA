@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.template import RequestContext, loader
 
@@ -24,5 +24,10 @@ def blog_index(request):
 	return render(request, 'blog/blog_index.html', context)
 
 def post_detail(request, post_title):
+	try:
+		post = Post.objects.get(post_title=post_title)
+	except Post.DoesNotExist:
+		raise Http404('Este post no existe.')
+		
 	response = "Estas buscando el post titulado: %s."
 	return HttpResponse(response % post_title)
