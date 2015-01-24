@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext, loader
 
 from blog.models import Post
@@ -24,10 +24,14 @@ def blog_index(request):
 	return render(request, 'blog/blog_index.html', context)
 
 def post_detail(request, post_title):
-	try:
-		post = Post.objects.get(post_title=post_title)
-	except Post.DoesNotExist:
-		raise Http404('Este post no existe.')
-		
+	# Excepcion 404 usando django.http.Http404:
+	#try:
+	#	post = Post.objects.get(post_title=post_title)
+	#except Post.DoesNotExist:
+	#	raise Http404('Este post no existe.')
+
+	# Usando el shortcut get_object_or_404:
+	post = get_object_or_404(Post, post_title=post_title)
+
 	response = "Estas buscando el post titulado: %s."
 	return HttpResponse(response % post_title)
