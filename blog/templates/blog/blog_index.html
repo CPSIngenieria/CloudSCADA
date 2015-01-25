@@ -1,9 +1,12 @@
+<h1>Blog</h1>
+<h2>Este es nuestro espacio para escribir acerca de lo que nos gusta</h2>
 {% if posts %}
-	<ul>
-		{% for post in posts %}
-		<li><a href="{% url 'blog:post_detail' post.post_title %}">{{ post.post_title }}</a></li>
-		{% endfor %}
-	</ul>
+<ul>
+	{% for post in posts %}
+	<h3>Post #{{ forloop.counter }}:</h3>
+	<li><a href="{% url 'blog:post_detail' post.post_title %}">{{ post.post_title }}</a></li>
+	{% endfor %}
+</ul>
 {% else %}
-	<p>No existen posts aun en el blog</p>
+<p>No existen posts aun en el blog</p>
 {% endif %}

@@ -1,0 +1,25 @@
+<h1>FAQ</h1>
+<h2>Tienes dudas? Aca te las contestamos ;)</h2>
+{% if questions %}
+<ul>
+	{% for question in questions %}
+	<h3>Pregunta #{{ forloop.counter }}:</h3>
+	<li>{{ question.question_text }}</li>
+	{% endfor %}
+</ul>
+{% else %}
+<p>No existen preguntas aun en el FAQ</p>
+{% endif %}
+
+<h2>Deseas hacer una pregunta nueva?</h2>
+
+{% if error_message %}
+<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'doubts:new_doubt' %}" method="post">
+	{% csrf_token %}
+	<input type="text" name="question" id="question" />
+	<label for="question">Pregunta:</label><br />
+	<input type="submit" value="Ask">
+</form>
