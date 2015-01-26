@@ -14,7 +14,7 @@ class QuestionAdmin(admin.ModelAdmin):
 	# Para ordenarlos por grupos o fieldsets:
 	fieldsets = [
 		( None, { 'fields': ['question_text','votes'] } ),
-		( 'Date information', { 'fields': ['pub_date', 'was_published_recently'], 'classes': ['collapse'] } ),
+		( 'Date information', { 'fields': ['pub_date'], 'classes': ['collapse'] } ),
 	]
 
 	# Para insertar un formulario de creacion de un modelo que es ForeignKey de Question:

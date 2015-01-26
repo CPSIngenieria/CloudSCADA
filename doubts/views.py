@@ -7,7 +7,7 @@ from doubts.models import Question
 
 def doubts(request):
 
-	questions = Question.objects.all()
+	questions = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')
 	context = {'questions':questions}
 	return render(request, 'doubts/doubts.html', context)
 
