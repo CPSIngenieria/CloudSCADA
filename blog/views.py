@@ -34,4 +34,4 @@ def post_detail(request, post_title):
 	post = get_object_or_404(Post, post_title=post_title)
 
 	response = "Estas buscando el post titulado: %s."
-	return HttpResponse(response % post_title)
+	return HttpResponse(response % post.post_title)
