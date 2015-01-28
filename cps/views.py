@@ -7,7 +7,12 @@ from django.contrib.auth import authenticate, login
 
 def landing(request):
 
-	context = {'saludo':'Hola CPS!'}
+	user = request.user.username
+	
+	if not user:
+		user = "invitado" 
+	
+	context = { 'active_user': user }
 	return render(request, 'cps/landing.html', context)
 
 def new_user(request):
