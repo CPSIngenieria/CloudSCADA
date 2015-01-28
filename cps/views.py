@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 def landing(request):
@@ -82,6 +82,8 @@ def user_login(request):
 			}
 		return render(request, 'cps/landing.html', context)
 
+def user_logout(request):
 
-
+	logout(request)
+	return HttpResponseRedirect(reverse('landing:landing'))
 
