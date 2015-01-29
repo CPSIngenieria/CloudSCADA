@@ -28,7 +28,7 @@ def new_doubt(request):
 class QuestionsSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Question
-		fields = ('question_text', 'pub_date', 'votes')
+		fields = ('question_text', 'pub_date', 'votes', 'was_published_recently')
 
 class QuestionsViewSet(viewsets.ModelViewSet):
 
