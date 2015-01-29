@@ -1,7 +1,8 @@
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from django.core.urlresolvers import reverse
 from django.utils import timezone
+from rest_framework import viewsets, serializers
 
 from doubts.models import Question
 
@@ -23,3 +24,13 @@ def new_doubt(request):
 		new_question_recieved = Question(question_text=new_question, pub_date=timezone.now())
 		new_question_recieved.save()
 		return HttpResponseRedirect(reverse('doubts:doubts'))
+
+class QuestionsSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = Question
+		fields = ('question_text', 'pub_date', 'votes')
+
+class QuestionsViewSet(viewsets.ModelViewSet):
+
+	queryset = Question.objects.all()
+	serializer_class = QuestionsSerializer

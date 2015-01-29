@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'doubts',
     'blog',
     'cps',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (

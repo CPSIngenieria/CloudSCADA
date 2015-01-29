@@ -1,6 +1,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext, loader
+from rest_framework import viewsets, serializers
 
 from blog.models import Post
 
@@ -35,3 +36,13 @@ def post_detail(request, post_title):
 
 	response = "Estas buscando el post titulado: %s."
 	return HttpResponse(response % post.post_title)
+
+class PostsSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = Post
+		fields = ('post_title', 'pub_date', 'tag', 'views')
+
+class PostsViewSet(viewsets.ModelViewSet):
+	queryset = Post.objects.all()
+	serializer_class = PostsSerializer
+
