@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 
-
 def landing(request):
 
 	username = request.user.username
@@ -12,4 +11,3 @@ def landing(request):
 	
 	context = { 'active_user': username }
 	return render(request, 'cps/landing.html', context)
-

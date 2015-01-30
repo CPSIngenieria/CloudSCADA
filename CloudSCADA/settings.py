@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'blog',
     'cps',
     'userprofiles',
+    'scada',
     'rest_framework',
 )
 
