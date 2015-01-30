@@ -16,3 +16,5 @@ class Profile(models.Model):
 
 	def can_access_scada(self):
 		return self.user.has_perm('userprofiles.access_scada')
+	can_access_scada.boolean = True
+	can_access_scada.short_description = 'Can access the SCADA?'
