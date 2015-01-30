@@ -94,3 +94,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/home/scada/webapp/static/'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+LOGIN_URL = '/'
