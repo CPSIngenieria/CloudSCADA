@@ -4,7 +4,7 @@
 <p><strong>{{ login_error_message }}</strong></p>
 {% endif %}
 
-<form action="{% url 'landing:user_login' %}" method="post">
+<form action="{% url 'userprofiles:user_login' %}" method="post">
 	{% csrf_token %}
 	<input type="text" name="username" id="username">
 	<label for="username">Username</label><br/>
@@ -12,7 +12,7 @@
 	<label for="password">Password</label><br/>
 	<input type="submit" value="Enviar">
 </form>
-<p>Para cerrar tu sesion, click en <a href="{% url 'landing:user_logout' %}">Logout</a></p>
+<p>Para cerrar tu sesion, click en <a href="{% url 'userprofiles:user_logout' %}">Logout</a></p>
 
 <h1>Hola {{ active_user }}, bienvenido a CPS ingenieria </h1>
 <h2>Hacemos CPS's</h2>
@@ -24,7 +24,7 @@
 <p><strong>{{ signin_error_message }}</strong></p>
 {% endif %}
 
-<form action="{% url 'landing:new_user' %}" method="post">
+<form action="{% url 'userprofiles:new_user' %}" method="post">
 	{% csrf_token %}
 	<input type="text" name="username" id="username">
 	<label for="username">Username</label><br/>

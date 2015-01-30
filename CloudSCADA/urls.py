@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^', include('cps.urls', namespace="landing")),
     url(r'^blog/', include('blog.urls', namespace="blog")),
     url(r'^faq/', include('doubts.urls', namespace="doubts")),
+    url(r'^userprofiles/', include('userprofiles.urls', namespace="userprofiles")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(router.urls)),
 )
