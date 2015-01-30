@@ -7,12 +7,12 @@ from django.contrib.auth import authenticate, login, logout
 
 def landing(request):
 
-	user = request.user.username
+	username = request.user.username
 	
-	if not user:
+	if not username:
 		user = "invitado" 
 	
-	context = { 'active_user': user }
+	context = { 'active_user': username }
 	return render(request, 'cps/landing.html', context)
 
 def new_user(request):

@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'doubts',
     'blog',
     'cps',
+    'userprofiles',
     'rest_framework',
 )
 
