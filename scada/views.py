@@ -10,4 +10,4 @@ def access_scada_permission(user):
 def mimico(request):
 	username = request.user.username
 	context = {'username': username }
-	return render(request, 'scada/mimico.html', context)
+	return render( request, 'scada/mimico.html', context )

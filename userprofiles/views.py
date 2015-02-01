@@ -1,3 +1,4 @@
+import mandrill
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -43,6 +44,33 @@ def new_user(request):
 		valid_password = password2
 		
 	User.objects.create_user(valid_username,valid_email,valid_password)
+
+	# Enviamos un correo electronico con la informacion de signup:
+	try:
+		mandrill_client = mandrill.Mandrill('_SoGpYeWNJ0p3ziJ1Hn75g')
+		template_content = [{'content':valid_username, 'name':'usuario'}]
+		message = {
+			'to':[
+				{
+					'email': valid_email,
+					'name': valid_username,
+					'type': 'to'
+				}
+			],
+			'merge_language':'handlebars',
+			'from_email':'andres@cpsingenieria.co',
+			'merge_vars':[
+				{
+					'rcpt':valid_email,
+					'vars':[{'content':valid_username, 'name':'usuario'},{'content':valid_password, 'name':'clave'}]
+				}
+			]
+		}
+		result = mandrill_client.messages.send_template(template_name='first_test', 
+			template_content=template_content, message=message, async=False)
+	except mandrill.Error, e:
+		print 'A mandrill error occurred: %s - %s' % (e.__class__, e)
+
 	return HttpResponseRedirect(reverse('landing:landing'))
 
 def user_login(request):
